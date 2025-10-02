@@ -6,6 +6,7 @@ uploadData*
 temp*
 *.log
 
+Data/*
 
 *.env
 !.template.env

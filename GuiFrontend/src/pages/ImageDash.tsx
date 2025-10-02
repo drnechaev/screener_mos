@@ -32,9 +32,16 @@ const ImageDash = ({ imageContent }: { imageContent: IImageContent }) => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.post<ImageData>(
-          `${import.meta.env.VITE_GUI_BACKEND}/studies/${imageContent.study_name}/${imageContent.series_id}`
-        );
+        const response = await axios.get<ImageData>(
+          `${import.meta.env.VITE_GUI_BACKEND}/studies/${imageContent.study_name}/${imageContent.series_id}`, 
+            {
+              withCredentials: true,
+              headers: {
+              'Content-Type': 'application/json',
+              }
+            }
+          );
+        console.log(response.data)
         setImageData(response.data);
       } catch (err) {
         setError('Failed to load image data');

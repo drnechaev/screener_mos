@@ -1,2 +1,10 @@
 logs/*
+cache/*
+output/*
+Weights/*
+data/*
 !logs/.gitkeep
+!output/.gitkeep
+!Weights/.gitkeep
+!cache/.gitkeep
+!data/.gitkeep

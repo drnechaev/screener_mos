@@ -13,9 +13,9 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 90
 
 #TODO: Ну пока можно так, но лучше вынести куда то
 #ЛОГИН
-USER_LOGIN = "admin"
+USER_LOGIN = "doc@airi.com"
 #ПАРОЛЬ
-USER_PASS = "123"
+USER_PASS = "test1234"
 
 
 
@@ -78,7 +78,7 @@ def get_user(username: str) -> bool:
     """
     if username==USER_LOGIN:
         return True
-    return True
+    return False
 
 
 def authenticate_user(username: str, password: str) -> bool:

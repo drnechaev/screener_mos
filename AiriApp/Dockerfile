@@ -13,13 +13,12 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install --upgrade pip && pip install wheel
 
-COPY ./requirements.txt ./requirements.txt
-COPY ./Addition /app/Addition
-
 RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 
+COPY ./Addition /app/Addition
 RUN pip install /app/Addition/medimm-main
 RUN pip install /app/Addition/screener-main
+COPY ./requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 ENV PYTHONDONTWRITEBYTECODE 1

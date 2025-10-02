@@ -41,7 +41,7 @@ async def download_excel(request: Request):
     )
 
 
-@studiesRouter.post("/{StudyName}/{SeriesID}")
+@studiesRouter.get("/{StudyName}/{SeriesID}")
 async def study(StudyName:str, SeriesID:str, request: Request) -> JSONResponse:
     """Возращает список обработанных исследований из базы без суффикса thumb
 
@@ -94,10 +94,6 @@ async def study(StudyName:str, SeriesID:str, request: Request) -> JSONResponse:
 
 @studiesRouter.post("/upload")
 @studiesRouter.post("/upload/")
-# async def uploadStudy(request: Request, uploadFile: UploadFile = File(...)) -> JSONResponse:
-
-#     print(f"Filename: {uploadFile.filename}")
-#     print(f"Content type: {uploadFile.content_type}")
 async def uploadStudy(uploadFile: UploadFile, request: Request) -> JSONResponse:
     """Функция приема файла из POST запроса и отправки
     в модель
@@ -125,7 +121,7 @@ async def uploadStudy(uploadFile: UploadFile, request: Request) -> JSONResponse:
         return JSONResponse(content={"Status":"error","msg":"Bad file format"}, status_code=400)
 
     #studyID = f"Uploaded{uploadFile.filename.replace('_','')}"
-    await request.state.app.Studies.AddData(file_name)
+    await request.state.app.Studies.AddData(file_name, True)
     #GetApp().Studies._AddData(id=studyID,Modality=modality,Datasets=[dcm], isReturn=False, dataFormat=studyFormat)
 
 
