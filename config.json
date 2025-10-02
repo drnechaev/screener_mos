@@ -1,0 +1,8 @@
+{
+    "Common":{
+        "LogFolder":"./Data/logs",
+        "LogLevel":"debug",
+        "DataPath":"./Data/data",
+        "OutputPath":"./Data/output"
+    }
+}

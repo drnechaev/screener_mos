@@ -1,0 +1,20 @@
+version: '3.9'
+
+x-app-common:
+  &app-common
+  build: 
+    dockerfile: ./AiriApp/Dockerfile
+    context: ./
+  image: airifm:0.1
+  volumes:
+    - ./Data:/app/Data 
+
+services:
+
+  App:
+    <<: *app-common
+    command: python3 app.py
+    container_name: airifm
+
+
+

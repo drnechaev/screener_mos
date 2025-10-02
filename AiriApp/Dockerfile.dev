@@ -1,0 +1,12 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+RUN pip3 install --upgrade pip && pip3 install wheel
+COPY ./requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+ENV PYTHONUNBUFFERED=TRUE
+
+COPY ./ /app

@@ -1,0 +1,7 @@
+defaults:
+  - paths: default
+  - hydra: no_outputs
+  - _self_
+
+
+num_workers: 16

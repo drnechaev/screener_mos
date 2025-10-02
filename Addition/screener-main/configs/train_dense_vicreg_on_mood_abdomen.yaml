@@ -1,0 +1,43 @@
+defaults:
+  - paths: default
+  - hydra: default
+  - _self_
+
+
+spatial_augmentations:
+  crop_size: [96, 96, 96]
+  rot_p: 0.1
+  max_angle: 30.0
+  min_voxel_spacing: [1.0, 1.0, 1.0]
+  max_voxel_spacing: [2.0, 2.0, 2.0]
+  flips: true
+  rot90: true
+color_augmentations:
+  blur_or_sharpen_p: 0.8
+  blur_sigma_range: [0.0, 1.5]
+  sharpen_sigma_range: [0.0, 1.5]
+  sharpen_alpha_range: [0.0, 2.0]
+  noise_p: 0.8
+  noise_sigma_range: [0.0, 0.1]
+  invert_p: 0.0
+  brightness_p: 0.8
+  brightness_range: [0.8, 1.2]
+  contrast_p: 0.8
+  contrast_range: [0.8, 1.2]
+  gamma_p: 0.8
+  gamma_range: [0.8, 1.25]
+masking:
+ p: 0.0
+ ratio: 0.6
+ block_size: [24, 24, 24]
+num_voxels_per_crop: 4096
+batch_size: 8
+num_batches_per_epoch: 1000
+descriptor_dim: 32
+i_weight: 25.0
+v_weight: 25.0
+c_weight: 1.0
+lr: 0.0003
+weight_decay: 0.000001
+max_steps: 300000
+log_group: dense_vicreg_on_mood_abdomen

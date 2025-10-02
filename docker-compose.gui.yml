@@ -1,0 +1,39 @@
+version: '3.9'
+
+x-app-common:
+  &app-common
+  build: 
+    dockerfile: ./AiriApp/Dockerfile
+    context: ./
+  image: AiriFM
+  env_file:
+    - .docker.env
+  volumes:
+    - ./Data:/app/Data 
+
+
+services:
+
+  GuiApp:
+    <<: *app-common
+    command: uvicorn guiapp:app --host 0.0.0.0 --port 8000 --workers 1
+    container_name: flatfeetapp_gui
+    ports:
+      - 7534:8000
+
+  GuiClient:
+    build:
+      context: ./GuiFrontend
+      dockerfile: ./Dockerfile.dev
+    image: guiclient.dev
+    container_name: guiclient.dev
+    environment:
+      - VITE_GUI_BACKEND=http://screener.airi.net:7534
+      - MODE=development
+    ports:
+      - '3080:3000'
+    volumes:
+      - ./GuiFrontend:/app
+      - /app/node_modules
+
+

@@ -1,0 +1,13 @@
+.DS_Store
+.pytest*
+.vscode*
+__pycache__
+uploadData*
+temp*
+*.log
+
+
+*.env
+!.template.env
+tmpData/*Data/Weights/glow_model.pt
+*.pt

@@ -1,0 +1,22 @@
+defaults:
+  - paths: default
+  - hydra: default
+  - _self_
+
+
+crop_size: [96, 96, 96]
+batch_size: 4
+num_batches_per_epoch: 1000
+descriptor_model_path: /home/jovyan/dumerenkov/__screener/screener-main/models/descriptor_model.pt
+descriptor_dim: 32
+avg_pool: true
+avg_pool_kernel_size: 3
+avg_pool_stride: 3
+avg_pool_padding: 0
+sigma: 0.1
+glow_hidden_dim: 512
+glow_depth: 64
+lr: 0.0003
+weight_decay: 0.000001
+max_steps: 75000
+log_group: glow_on_ctrate
